@@ -1,0 +1,17 @@
+{
+	"name": "Harish_Dist_Tables",
+	"properties": {
+		"content": {
+			"query": "------------------------------\n--ROUND ROBIN DISTRIBUTATION\n------------------------------\nCREATE TABLE round_table (\n    Id INT,\n    Name VARCHAR(4000),\n    salary INT\n    \n)\nWITH\n(\n    DISTRIBUTION=ROUND_ROBIN\n)\n\nINSERT INTO round_table\nvalues (1,'Harish',20000);\n\nSELECT * FROM round_table\n\n------------------------------\n--REPLICATE DISTRIBUTATION\n------------------------------\n\nCREATE SCHEMA gold;\n\nCREATE TABLE gold.dim_product\n(\n    dim_key_prod INT,\n    prod_id INT,\n    prod_name VARCHAR(4000)\n)\nWITH\n(\n    DISTRIBUTION=REPLICATE\n)\n\n------------------------------\n--HASH DISTRIBUTATION\n------------------------------\nCREATE TABLE gold.facttable\n(\n    dim_key_prod INT,\n    revenue INT,\n    cost INT\n)\nWITH\n(\n    DISTRIBUTION=HASH(dim_key_prod)\n)\n\n\n\n\n\n\n\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "harishdedicatedsqlpool",
+				"poolName": "harishdedicatedsqlpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

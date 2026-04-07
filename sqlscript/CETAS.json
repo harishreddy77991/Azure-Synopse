@@ -1,0 +1,17 @@
+{
+	"name": "CETAS",
+	"properties": {
+		"content": {
+			"query": "-----------\n--CETAS\n-----------\nCREATE EXTERNAL TABLE revenue_cetas\nWITH\n(\n    LOCATION = 'cetas_revenue',\n\tDATA_SOURCE = raw_ext_source,\n\tFILE_FORMAT = parquet_format\n)\nAS\nSELECT \n    *\nFROM\n    OPENROWSET(\n        BULK'revenue',\n        DATA_SOURCE = 'raw_ext_source',\n        FORMAT='CSV',\n        PARSER_VERSION='2.0',\n        HEADER_ROW=TRUE\n    )AS query1",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "harishserverlesssqlpool",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "open_row_set",
+	"properties": {
+		"content": {
+			"query": "-------------------\n--CREATE CREDIENTAL\n-------------------\nCREATE DATABASE SCOPED CREDENTIAL Harishcreds\nWITH \n    IDENTITY = 'Managed Identity';\n------------------------------\n--CREATE EXTERNAL DATA SOURCE\n------------------------------\nCREATE EXTERNAL DATA SOURCE raw_ext_source\nWITH (\n    LOCATION = 'https://stgnew.dfs.core.windows.net/raw',\n    CREDENTIAL=Harishcreds\n);\n------------------------------\n--CREATE EXTERNAL CSV FILE FORMATS\n------------------------------\nCREATE EXTERNAL FILE FORMAT csv_format\nWITH (\n        FORMAT_TYPE = DELIMITEDTEXT,\n        FORMAT_OPTIONS ( \n                            FIELD_TERMINATOR=''\n        )\n )\n-----------------------------------\n--CREATE EXTERNAL PARQUET FILE FORMATS\n-----------------------------------\nCREATE EXTERNAL FILE FORMAT parquet_format\nWITH (\n        FORMAT_TYPE =PARQUET,\n        DATA_COMPRESSION='org.apache.hadoop.io.compress.SnappyCodec'\n      \n      )\n\n------------------------------\n--OPEN ROW SET FUNCTION\n------------------------------\nSELECT \n    *\nFROM\n    OPENROWSET(\n        BULK'revenue',\n        DATA_SOURCE = 'raw_ext_source',\n        FORMAT='CSV',\n        PARSER_VERSION='2.0',\n        HEADER_ROW=TRUE\n    )AS query1\n\n\n\n\n\n\n\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "harishserverlesssqlpool",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
