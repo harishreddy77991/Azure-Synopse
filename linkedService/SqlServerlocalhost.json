@@ -1,0 +1,21 @@
+{
+	"name": "SqlServerlocalhost",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "LAPTOP-2GODFQU2",
+			"database": "harishdb",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "harishsqlserver",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlYTk2ZGQ0Mi04NWYyLTQzOGEtYTE5ZS02N2UyNjE4Yzg2NmYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SHIROnPrem",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
